@@ -48,12 +48,17 @@ func _process(delta: float) -> void:
 			dir = 1
 		else:
 			dir = 0
+		print(websocket_client.left_motor_data, websocket_client.right_motor_data, websocket_client.current_position, websocket_client.current_efficiency)
 	
 	# 平滑移动
 	if dir != 0:
+		if websocket_client.current_position == websocket_client.POS_TYPE.NONE:
+			last_efficiency = 10
+		else:
+			last_efficiency = websocket_client.current_efficiency
+		
 		if ball_attached: 
 			launch_ball()
-		last_efficiency = websocket_client.current_efficiency
 		velocity.x = lerp(velocity.x, dir * speed, accel * last_efficiency * delta)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, deccel * delta)

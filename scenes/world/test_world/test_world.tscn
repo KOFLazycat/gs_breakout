@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c16uc5f7h3heg"]
+[gd_scene load_steps=17 format=3 uid="uid://c16uc5f7h3heg"]
 
 [ext_resource type="Script" uid="uid://dao3w1fdupipv" path="res://scripts/world/test_world.gd" id="1_7vg3j"]
 [ext_resource type="PackedScene" uid="uid://dyy7lp07carkr" path="res://scenes/paddle/paddle.tscn" id="1_505ul"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cp1o3vxry0vxc" path="res://scripts/world/pattern.gd" id="6_1jqyo"]
 [ext_resource type="PackedScene" uid="uid://cvg0cmgxvdkk0" path="res://scenes/ball/ball.tscn" id="8_uwa4i"]
 [ext_resource type="Script" uid="uid://djlojp0ya311h" path="res://scripts/world/camera_final.gd" id="9_kdv54"]
+[ext_resource type="PackedScene" uid="uid://stcivysk52ie" path="res://scenes/brick/brick.tscn" id="11_8x3xg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mdnw5"]
 shader = ExtResource("4_pkmkk")
@@ -42,7 +43,7 @@ offset_right = 865.0
 offset_bottom = 361.0
 theme_override_fonts/font = ExtResource("1_md5le")
 theme_override_font_sizes/font_size = 32
-text = "{\"type\": \"JOIN_ROOM\",\"data\": {\"roomId\": \"c1706e39-d727-46cf-a9c9-959c5b6e49a5\"}}"
+text = "{\"type\": \"JOIN_ROOM\",\"data\": {\"roomId\": \"64783ce3-55c3-434d-b982-01b382d80d05\"}}"
 autowrap_mode = 1
 
 [node name="Button" type="Button" parent="CanvasLayer"]
@@ -107,6 +108,123 @@ shape = SubResource("WorldBoundaryShape2D_f5p6v")
 position = Vector2(561, 1921)
 shape = SubResource("WorldBoundaryShape2D_mdnw5")
 
+[node name="SpawnPos" type="Node" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPos"]
+position = Vector2(150, 150)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPos"]
+position = Vector2(300, 150)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPos"]
+position = Vector2(450, 150)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPos"]
+position = Vector2(600, 150)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPos"]
+position = Vector2(750, 150)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPos"]
+position = Vector2(150, 300)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPos"]
+position = Vector2(300, 300)
+
+[node name="Marker2D8" type="Marker2D" parent="SpawnPos"]
+position = Vector2(450, 300)
+
+[node name="Marker2D9" type="Marker2D" parent="SpawnPos"]
+position = Vector2(600, 300)
+
+[node name="Marker2D10" type="Marker2D" parent="SpawnPos"]
+position = Vector2(750, 300)
+
+[node name="Marker2D11" type="Marker2D" parent="SpawnPos"]
+position = Vector2(150, 450)
+
+[node name="Marker2D12" type="Marker2D" parent="SpawnPos"]
+position = Vector2(300, 450)
+
+[node name="Marker2D13" type="Marker2D" parent="SpawnPos"]
+position = Vector2(450, 450)
+
+[node name="Marker2D14" type="Marker2D" parent="SpawnPos"]
+position = Vector2(600, 450)
+
+[node name="Marker2D15" type="Marker2D" parent="SpawnPos"]
+position = Vector2(750, 450)
+
+[node name="Marker2D16" type="Marker2D" parent="SpawnPos"]
+position = Vector2(150, 600)
+
+[node name="Marker2D17" type="Marker2D" parent="SpawnPos"]
+position = Vector2(300, 600)
+
+[node name="Marker2D18" type="Marker2D" parent="SpawnPos"]
+position = Vector2(450, 600)
+
+[node name="Marker2D19" type="Marker2D" parent="SpawnPos"]
+position = Vector2(600, 600)
+
+[node name="Marker2D20" type="Marker2D" parent="SpawnPos"]
+position = Vector2(750, 600)
+
+[node name="Marker2D21" type="Marker2D" parent="SpawnPos"]
+position = Vector2(900, 150)
+
+[node name="Marker2D22" type="Marker2D" parent="SpawnPos"]
+position = Vector2(900, 300)
+
+[node name="Marker2D23" type="Marker2D" parent="SpawnPos"]
+position = Vector2(900, 450)
+
+[node name="Marker2D24" type="Marker2D" parent="SpawnPos"]
+position = Vector2(900, 600)
+
+[node name="Bricks" type="Node" parent="."]
+
+[node name="Brick" parent="Bricks" instance=ExtResource("11_8x3xg")]
+visible = false
+
+[node name="Brick2" parent="Bricks" instance=ExtResource("11_8x3xg")]
+visible = false
+type = 1
+
+[node name="Brick3" parent="Bricks" instance=ExtResource("11_8x3xg")]
+visible = false
+type = 2
+
+[node name="Brick4" parent="Bricks" instance=ExtResource("11_8x3xg")]
+visible = false
+type = 3
+size = 1
+
+[node name="Brick5" parent="Bricks" instance=ExtResource("11_8x3xg")]
+visible = false
+type = 4
+size = 1
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("11_8x3xg")]
+visible = false
+type = 4
+size = 1
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("11_8x3xg")]
+visible = false
+type = 4
+size = 1
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("11_8x3xg")]
+visible = false
+type = 4
+size = 1
+
+[node name="Brick9" parent="Bricks" instance=ExtResource("11_8x3xg")]
+visible = false
+type = 4
+size = 1
+
 [node name="Ball" parent="." instance=ExtResource("8_uwa4i")]
 position = Vector2(562, 1255)
 
@@ -125,3 +243,8 @@ position = Vector2(540, 960)
 script = ExtResource("9_kdv54")
 dynamic_enabled = true
 dynamic_factor = 0.3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true

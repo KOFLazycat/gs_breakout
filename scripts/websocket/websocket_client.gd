@@ -72,24 +72,10 @@ func _process(_delta: float) -> void:
 						left_motor_data["efficiency"] = motor_data.get("efficiency")
 						left_motor_data["calorie"] = motor_data.get("calorie")
 						# 左电机回绳
-						if abs(left_motor_data["speed"]) > 20 && sign(left_motor_data["speed"]) < 0:
-							left_motor_data["spring_back"] = 1
-						else:
+						if abs(left_motor_data["speed"]) > 20:
 							left_motor_data["spring_back"] = 0
-						
-						### TODO 电机暂停、休眠、基础力处理逻辑
-						#if left_motor_data["status"] == 0 || left_motor_data["status"] == 1 || left_motor_data["mode"] == 1:
-							#current_position = POS_TYPE.NONE
-						#else:
-							### TODO 对于速度过小或者功率过小处理逻辑
-							#if abs(left_motor_data["speed"]) < 20 || left_motor_data["efficiency"] < 5:
-								#current_position = POS_TYPE.NONE
-							#else:
-								## 左电机回绳
-								#if sign(left_motor_data["speed"]) < 0:
-									#left_motor_data["spring_back"] = 1
-								#else:
-									#left_motor_data["spring_back"] = 0
+						else:
+							left_motor_data["spring_back"] = 1
 					
 					if position == POS_TYPE.RIGHT:
 						right_motor_data["status"] = motor_data.get("status")
@@ -100,10 +86,10 @@ func _process(_delta: float) -> void:
 						right_motor_data["efficiency"] = motor_data.get("efficiency")
 						right_motor_data["calorie"] = motor_data.get("calorie")
 						# 右电机回绳
-						if abs(right_motor_data["speed"]) > 20 && sign(right_motor_data["speed"]) > 0:
-							right_motor_data["spring_back"] = 1
-						else:
+						if abs(right_motor_data["speed"]) > 20:
 							right_motor_data["spring_back"] = 0
+						else:
+							right_motor_data["spring_back"] = 1
 					
 					deal_current_data()
 

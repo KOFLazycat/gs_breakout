@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://dp7yl5panydtf"
+path="res://.godot/imported/destroyed.sfxr-79c3ce986b217abed8b39782cb7c1905.sample"
+
+[deps]
+
+source_file="res://assets/sounds/brick/destroyed.sfxr"
+dest_files=["res://.godot/imported/destroyed.sfxr-79c3ce986b217abed8b39782cb7c1905.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0
