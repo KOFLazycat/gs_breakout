@@ -1,9 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://c16uc5f7h3heg"]
+[gd_scene load_steps=16 format=3 uid="uid://c16uc5f7h3heg"]
 
 [ext_resource type="Script" uid="uid://dao3w1fdupipv" path="res://scripts/world/test_world.gd" id="1_7vg3j"]
 [ext_resource type="PackedScene" uid="uid://dyy7lp07carkr" path="res://scenes/paddle/paddle.tscn" id="1_505ul"]
 [ext_resource type="FontFile" uid="uid://dukaab4rhw8qo" path="res://assets/fonts/AldotheApache.ttf" id="1_md5le"]
 [ext_resource type="Script" uid="uid://mff6ydbdakxm" path="res://scripts/websocket/websocket_client.gd" id="2_a1kyj"]
+[ext_resource type="Texture2D" uid="uid://dn21jo16h3doy" path="res://assets/images/bg/background.png" id="3_f5p6v"]
+[ext_resource type="Shader" uid="uid://bmsk7h223pekh" path="res://scripts/shader/pattern.gdshader" id="4_pkmkk"]
+[ext_resource type="Texture2D" uid="uid://76u3yv37bjic" path="res://assets/images/bg/pattern.png" id="5_mdnw5"]
+[ext_resource type="Script" uid="uid://cp1o3vxry0vxc" path="res://scripts/world/pattern.gd" id="6_1jqyo"]
+[ext_resource type="PackedScene" uid="uid://cvg0cmgxvdkk0" path="res://scenes/ball/ball.tscn" id="8_uwa4i"]
+[ext_resource type="Script" uid="uid://djlojp0ya311h" path="res://scripts/world/camera_final.gd" id="9_kdv54"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mdnw5"]
+shader = ExtResource("4_pkmkk")
+shader_parameter/pattern = ExtResource("5_mdnw5")
+shader_parameter/speed = 0.3
+shader_parameter/size_scale = 30.0
+shader_parameter/color = Color(0.74902, 0.74902, 0.74902, 0.254902)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7vg3j"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pkmkk"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f5p6v"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mdnw5"]
 
 [node name="TestWorld" type="Node2D"]
 script = ExtResource("1_7vg3j")
@@ -42,8 +66,52 @@ theme_override_font_sizes/font_size = 32
 text = "999999999"
 autowrap_mode = 1
 
+[node name="Map" type="Node2D" parent="."]
+
+[node name="BackGround" type="Sprite2D" parent="Map"]
+position = Vector2(540, 960)
+scale = Vector2(2, 2)
+texture = ExtResource("3_f5p6v")
+
+[node name="Pattern" type="ColorRect" parent="Map"]
+material = SubResource("ShaderMaterial_mdnw5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1379.0
+offset_top = -863.0
+offset_right = 2461.0
+offset_bottom = 2977.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.785398
+pivot_offset = Vector2(1920, 1920)
+script = ExtResource("6_1jqyo")
+
+[node name="Wall" type="StaticBody2D" parent="Map"]
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="Map/Wall"]
+position = Vector2(0, 93)
+shape = SubResource("WorldBoundaryShape2D_7vg3j")
+
+[node name="WallRight" type="CollisionShape2D" parent="Map/Wall"]
+position = Vector2(1080, 33)
+shape = SubResource("WorldBoundaryShape2D_pkmkk")
+
+[node name="WallUp" type="CollisionShape2D" parent="Map/Wall"]
+position = Vector2(571, 1)
+shape = SubResource("WorldBoundaryShape2D_f5p6v")
+
+[node name="WallDown" type="CollisionShape2D" parent="Map/Wall"]
+position = Vector2(561, 1921)
+shape = SubResource("WorldBoundaryShape2D_mdnw5")
+
+[node name="Ball" parent="." instance=ExtResource("8_uwa4i")]
+position = Vector2(562, 1255)
+
 [node name="Paddle" parent="." node_paths=PackedStringArray("websocket_client") instance=ExtResource("1_505ul")]
-position = Vector2(536, 1205)
+position = Vector2(564, 1367)
 websocket_client = NodePath("../WebsocketClient")
 
 [node name="WebsocketClient" type="Node" parent="." node_paths=PackedStringArray("test_edit", "button", "label")]
@@ -51,3 +119,9 @@ script = ExtResource("2_a1kyj")
 test_edit = NodePath("../CanvasLayer/TextEdit")
 button = NodePath("../CanvasLayer/Button")
 label = NodePath("../CanvasLayer/Label")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(540, 960)
+script = ExtResource("9_kdv54")
+dynamic_enabled = true
+dynamic_factor = 0.3

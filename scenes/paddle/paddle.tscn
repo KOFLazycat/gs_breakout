@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c1vqmg2bem55c" path="res://scripts/paddle/paddle.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ds1dodq00qinh" path="res://assets/images/paddle/Paddle.png" id="3"]
 [ext_resource type="Shader" uid="uid://bw35o8258ncry" path="res://scripts/shader/deform.gdshader" id="3_fys6v"]
-[ext_resource type="AudioStream" uid="uid://bdpw2g1par8w1" path="res://assets/sounds/paddle_bump.sfxr" id="6_uaytd"]
+[ext_resource type="AudioStream" uid="uid://bdpw2g1par8w1" path="res://assets/sounds/paddle/paddle_bump.sfxr" id="6_uaytd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wb8cu"]
 shader = ExtResource("3_fys6v")
@@ -136,11 +136,13 @@ _data = {
 
 [node name="Paddle" type="CharacterBody2D" groups=["Paddle"]]
 process_priority = -2
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1")
 
 [node name="Paddle" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_wb8cu")
+use_parent_material = true
 position = Vector2(0, 4)
 texture = ExtResource("3")
 
@@ -153,6 +155,9 @@ process_material = SubResource("ParticleProcessMaterial_e5odn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
+
+[node name="LaunchPoint" type="Marker2D" parent="."]
+position = Vector2(0, -37)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

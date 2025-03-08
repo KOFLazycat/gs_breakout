@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://bdpw2g1par8w1"
+path="res://.godot/imported/paddle_bump.sfxr-cae5a2f5a9651754f721c6c9a1239bab.sample"
+
+[deps]
+
+source_file="res://assets/sounds/paddle/paddle_bump.sfxr"
+dest_files=["res://.godot/imported/paddle_bump.sfxr-cae5a2f5a9651754f721c6c9a1239bab.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

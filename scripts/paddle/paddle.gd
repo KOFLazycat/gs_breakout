@@ -5,16 +5,17 @@ signal start
 
 @export var websocket_client: WebsocketClient
 @export var speed: float = 600.0
-@export var accel: float = 1.0
+@export var accel: float = 2.0
 @export var deccel: float = 0.5
 @export_category("Oscillator")
 @export var spring: float = 400.0
-@export var damp: float = 30.0
+@export var damp: float = 20.0
 @export var velocity_multiplier: float = 1.0
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var thickness: float = $CollisionShape2D.shape.extents.y
 @onready var paddle: Sprite2D = $Paddle
+@onready var launch_point: Marker2D = $LaunchPoint
 
 var ball_attached = null
 var game_over: bool = false
@@ -50,6 +51,9 @@ func _process(delta: float) -> void:
 	if dir != 0:
 		if websocket_client.efficiency == 0:
 			websocket_client.efficiency = 1
+			accel = 20
+		if ball_attached: 
+			launch_ball()
 		last_efficiency = websocket_client.efficiency
 		velocity.x = lerp(velocity.x, dir * speed, accel * websocket_client.efficiency * delta)
 	else:
