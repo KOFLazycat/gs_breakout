@@ -42,7 +42,7 @@ offset_right = 865.0
 offset_bottom = 361.0
 theme_override_fonts/font = ExtResource("1_md5le")
 theme_override_font_sizes/font_size = 32
-text = "{\"type\": \"JOIN_ROOM\",\"data\": {\"roomId\": \"6c7a3805-8597-496f-aefc-04a1c3da3681\"}}"
+text = "{\"type\": \"JOIN_ROOM\",\"data\": {\"roomId\": \"c1706e39-d727-46cf-a9c9-959c5b6e49a5\"}}"
 autowrap_mode = 1
 
 [node name="Button" type="Button" parent="CanvasLayer"]

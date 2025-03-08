@@ -5,8 +5,8 @@ signal start
 
 @export var websocket_client: WebsocketClient
 @export var speed: float = 600.0
-@export var accel: float = 2.0
-@export var deccel: float = 0.5
+@export var accel: float = 5.0
+@export var deccel: float = 10.0
 @export_category("Oscillator")
 @export var spring: float = 400.0
 @export var damp: float = 20.0
@@ -39,27 +39,27 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if game_over or stage_clear: return
 	var dir: float = 0
-	if websocket_client.position == 0:
+	if websocket_client.current_position == websocket_client.POS_TYPE.NONE:
 		dir = Input.get_action_strength("right") - Input.get_action_strength("left")
 	else:
-		if websocket_client.position == 1:
+		if websocket_client.current_position == websocket_client.POS_TYPE.LEFT:
 			dir = -1
-		elif websocket_client.position == 2:
+		elif websocket_client.current_position == websocket_client.POS_TYPE.RIGHT:
 			dir = 1
+		else:
+			dir = 0
 	
 	# 平滑移动
 	if dir != 0:
-		if websocket_client.efficiency == 0:
-			websocket_client.efficiency = 1
-			accel = 20
 		if ball_attached: 
 			launch_ball()
-		last_efficiency = websocket_client.efficiency
-		velocity.x = lerp(velocity.x, dir * speed, accel * websocket_client.efficiency * delta)
+		last_efficiency = websocket_client.current_efficiency
+		velocity.x = lerp(velocity.x, dir * speed, accel * last_efficiency * delta)
 	else:
-		velocity.x = lerp(velocity.x, 0.0, deccel * last_efficiency * delta)
+		velocity.x = lerp(velocity.x, 0.0, deccel * delta)
 	## 限制速度范围
 	velocity.x = clampf(velocity.x, -500, 500);
+	print("速度: " + str(velocity.x))
 	
 	## Oscillator
 	oscillator_velocity += (velocity.x / speed) * velocity_multiplier
