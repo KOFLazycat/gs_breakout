@@ -49,6 +49,7 @@ var hitstop_bomb: int = 10
 
 
 func _ready() -> void:
+	appear()
 	sprite_base_scale = sprite.scale
 	randomize()
 
