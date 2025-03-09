@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c16uc5f7h3heg"]
+[gd_scene load_steps=20 format=3 uid="uid://c16uc5f7h3heg"]
 
 [ext_resource type="Script" uid="uid://dao3w1fdupipv" path="res://scripts/world/test_world.gd" id="1_7vg3j"]
 [ext_resource type="PackedScene" uid="uid://dyy7lp07carkr" path="res://scenes/paddle/paddle.tscn" id="1_505ul"]
@@ -8,9 +8,11 @@
 [ext_resource type="Shader" uid="uid://bmsk7h223pekh" path="res://scripts/shader/pattern.gdshader" id="4_pkmkk"]
 [ext_resource type="Texture2D" uid="uid://76u3yv37bjic" path="res://assets/images/bg/pattern.png" id="5_mdnw5"]
 [ext_resource type="Script" uid="uid://cp1o3vxry0vxc" path="res://scripts/world/pattern.gd" id="6_1jqyo"]
+[ext_resource type="Shader" path="res://scripts/shader/combo.gdshader" id="7_50y7d"]
 [ext_resource type="PackedScene" uid="uid://cvg0cmgxvdkk0" path="res://scenes/ball/ball.tscn" id="8_uwa4i"]
 [ext_resource type="Script" uid="uid://djlojp0ya311h" path="res://scripts/world/camera_final.gd" id="9_kdv54"]
 [ext_resource type="PackedScene" uid="uid://stcivysk52ie" path="res://scenes/brick/brick.tscn" id="11_8x3xg"]
+[ext_resource type="PackedScene" uid="uid://cn3a4bs7x53tq" path="res://scenes/ui/score/score.tscn" id="13_ms58n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mdnw5"]
 shader = ExtResource("4_pkmkk")
@@ -30,12 +32,18 @@ normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mdnw5"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ms58n"]
+shader = ExtResource("7_50y7d")
+shader_parameter/fill_v = 0.0
+shader_parameter/color = Color(0.462745, 0.462745, 0.462745, 0.180392)
+
 [node name="TestWorld" type="Node2D"]
 script = ExtResource("1_7vg3j")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="WebsocketUI" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+[node name="TextEdit" type="TextEdit" parent="WebsocketUI"]
 custom_minimum_size = Vector2(600, 200)
 offset_left = 265.0
 offset_top = 161.0
@@ -46,7 +54,7 @@ theme_override_font_sizes/font_size = 32
 text = "{\"type\": \"JOIN_ROOM\",\"data\": {\"roomId\": \"64783ce3-55c3-434d-b982-01b382d80d05\"}}"
 autowrap_mode = 1
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="Button" type="Button" parent="WebsocketUI"]
 custom_minimum_size = Vector2(300, 80)
 offset_left = 405.0
 offset_top = 466.0
@@ -56,7 +64,7 @@ theme_override_fonts/font = ExtResource("1_md5le")
 theme_override_font_sizes/font_size = 32
 text = "发送指令"
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="WebsocketUI"]
 custom_minimum_size = Vector2(600, 200)
 offset_left = 266.0
 offset_top = 670.0
@@ -108,79 +116,103 @@ shape = SubResource("WorldBoundaryShape2D_f5p6v")
 position = Vector2(561, 1921)
 shape = SubResource("WorldBoundaryShape2D_mdnw5")
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Score" parent="UI" instance=ExtResource("13_ms58n")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.5
+offset_right = 178.5
+grow_horizontal = 2
+
+[node name="Combo" type="Label" parent="."]
+modulate = Color(0.462745, 0.462745, 0.462745, 0.180392)
+material = SubResource("ShaderMaterial_ms58n")
+custom_minimum_size = Vector2(1080, 400)
+offset_top = 692.0
+offset_right = 1080.0
+offset_bottom = 1092.0
+pivot_offset = Vector2(540, 200)
+theme_override_fonts/font = ExtResource("1_md5le")
+theme_override_font_sizes/font_size = 250
+text = "COMBO 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SpawnPos" type="Node" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="SpawnPos"]
-position = Vector2(150, 150)
+position = Vector2(150, 252)
 
 [node name="Marker2D2" type="Marker2D" parent="SpawnPos"]
-position = Vector2(300, 150)
+position = Vector2(300, 252)
 
 [node name="Marker2D3" type="Marker2D" parent="SpawnPos"]
-position = Vector2(450, 150)
+position = Vector2(450, 252)
 
 [node name="Marker2D4" type="Marker2D" parent="SpawnPos"]
-position = Vector2(600, 150)
+position = Vector2(600, 252)
 
 [node name="Marker2D5" type="Marker2D" parent="SpawnPos"]
-position = Vector2(750, 150)
+position = Vector2(750, 252)
 
 [node name="Marker2D6" type="Marker2D" parent="SpawnPos"]
-position = Vector2(150, 300)
+position = Vector2(150, 402)
 
 [node name="Marker2D7" type="Marker2D" parent="SpawnPos"]
-position = Vector2(300, 300)
+position = Vector2(300, 402)
 
 [node name="Marker2D8" type="Marker2D" parent="SpawnPos"]
-position = Vector2(450, 300)
+position = Vector2(450, 402)
 
 [node name="Marker2D9" type="Marker2D" parent="SpawnPos"]
-position = Vector2(600, 300)
+position = Vector2(600, 402)
 
 [node name="Marker2D10" type="Marker2D" parent="SpawnPos"]
-position = Vector2(750, 300)
+position = Vector2(750, 402)
 
 [node name="Marker2D11" type="Marker2D" parent="SpawnPos"]
-position = Vector2(150, 450)
+position = Vector2(150, 552)
 
 [node name="Marker2D12" type="Marker2D" parent="SpawnPos"]
-position = Vector2(300, 450)
+position = Vector2(300, 552)
 
 [node name="Marker2D13" type="Marker2D" parent="SpawnPos"]
-position = Vector2(450, 450)
+position = Vector2(450, 552)
 
 [node name="Marker2D14" type="Marker2D" parent="SpawnPos"]
-position = Vector2(600, 450)
+position = Vector2(600, 552)
 
 [node name="Marker2D15" type="Marker2D" parent="SpawnPos"]
-position = Vector2(750, 450)
+position = Vector2(750, 552)
 
 [node name="Marker2D16" type="Marker2D" parent="SpawnPos"]
-position = Vector2(150, 600)
+position = Vector2(150, 702)
 
 [node name="Marker2D17" type="Marker2D" parent="SpawnPos"]
-position = Vector2(300, 600)
+position = Vector2(300, 702)
 
 [node name="Marker2D18" type="Marker2D" parent="SpawnPos"]
-position = Vector2(450, 600)
+position = Vector2(450, 702)
 
 [node name="Marker2D19" type="Marker2D" parent="SpawnPos"]
-position = Vector2(600, 600)
+position = Vector2(600, 702)
 
 [node name="Marker2D20" type="Marker2D" parent="SpawnPos"]
-position = Vector2(750, 600)
+position = Vector2(750, 702)
 
 [node name="Marker2D21" type="Marker2D" parent="SpawnPos"]
-position = Vector2(900, 150)
+position = Vector2(900, 252)
 
 [node name="Marker2D22" type="Marker2D" parent="SpawnPos"]
-position = Vector2(900, 300)
+position = Vector2(900, 402)
 
 [node name="Marker2D23" type="Marker2D" parent="SpawnPos"]
-position = Vector2(900, 450)
+position = Vector2(900, 552)
 
 [node name="Marker2D24" type="Marker2D" parent="SpawnPos"]
-position = Vector2(900, 600)
+position = Vector2(900, 702)
 
 [node name="Bricks" type="Node" parent="."]
 
@@ -234,9 +266,9 @@ websocket_client = NodePath("../WebsocketClient")
 
 [node name="WebsocketClient" type="Node" parent="." node_paths=PackedStringArray("test_edit", "button", "label")]
 script = ExtResource("2_a1kyj")
-test_edit = NodePath("../CanvasLayer/TextEdit")
-button = NodePath("../CanvasLayer/Button")
-label = NodePath("../CanvasLayer/Label")
+test_edit = NodePath("../WebsocketUI/TextEdit")
+button = NodePath("../WebsocketUI/Button")
+label = NodePath("../WebsocketUI/Label")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(540, 960)
@@ -248,3 +280,7 @@ dynamic_factor = 0.3
 wait_time = 20.0
 one_shot = true
 autostart = true
+
+[node name="ComboTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
