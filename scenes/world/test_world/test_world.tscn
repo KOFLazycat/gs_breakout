@@ -221,76 +221,76 @@ vertical_alignment = 1
 [node name="SpawnPos" type="Node" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="SpawnPos"]
-position = Vector2(150, 252)
+position = Vector2(170, 252)
 
 [node name="Marker2D2" type="Marker2D" parent="SpawnPos"]
-position = Vector2(300, 252)
+position = Vector2(320, 252)
 
 [node name="Marker2D3" type="Marker2D" parent="SpawnPos"]
-position = Vector2(450, 252)
+position = Vector2(470, 252)
 
 [node name="Marker2D4" type="Marker2D" parent="SpawnPos"]
-position = Vector2(600, 252)
+position = Vector2(620, 252)
 
 [node name="Marker2D5" type="Marker2D" parent="SpawnPos"]
-position = Vector2(750, 252)
+position = Vector2(770, 252)
 
 [node name="Marker2D6" type="Marker2D" parent="SpawnPos"]
-position = Vector2(150, 402)
+position = Vector2(170, 402)
 
 [node name="Marker2D7" type="Marker2D" parent="SpawnPos"]
-position = Vector2(300, 402)
+position = Vector2(320, 402)
 
 [node name="Marker2D8" type="Marker2D" parent="SpawnPos"]
-position = Vector2(450, 402)
+position = Vector2(470, 402)
 
 [node name="Marker2D9" type="Marker2D" parent="SpawnPos"]
-position = Vector2(600, 402)
+position = Vector2(620, 402)
 
 [node name="Marker2D10" type="Marker2D" parent="SpawnPos"]
-position = Vector2(750, 402)
+position = Vector2(770, 402)
 
 [node name="Marker2D11" type="Marker2D" parent="SpawnPos"]
-position = Vector2(150, 552)
+position = Vector2(170, 552)
 
 [node name="Marker2D12" type="Marker2D" parent="SpawnPos"]
-position = Vector2(300, 552)
+position = Vector2(320, 552)
 
 [node name="Marker2D13" type="Marker2D" parent="SpawnPos"]
-position = Vector2(450, 552)
+position = Vector2(470, 552)
 
 [node name="Marker2D14" type="Marker2D" parent="SpawnPos"]
-position = Vector2(600, 552)
+position = Vector2(620, 552)
 
 [node name="Marker2D15" type="Marker2D" parent="SpawnPos"]
-position = Vector2(750, 552)
+position = Vector2(770, 552)
 
 [node name="Marker2D16" type="Marker2D" parent="SpawnPos"]
-position = Vector2(150, 702)
+position = Vector2(170, 702)
 
 [node name="Marker2D17" type="Marker2D" parent="SpawnPos"]
-position = Vector2(300, 702)
+position = Vector2(320, 702)
 
 [node name="Marker2D18" type="Marker2D" parent="SpawnPos"]
-position = Vector2(450, 702)
+position = Vector2(470, 702)
 
 [node name="Marker2D19" type="Marker2D" parent="SpawnPos"]
-position = Vector2(600, 702)
+position = Vector2(620, 702)
 
 [node name="Marker2D20" type="Marker2D" parent="SpawnPos"]
-position = Vector2(750, 702)
+position = Vector2(770, 702)
 
 [node name="Marker2D21" type="Marker2D" parent="SpawnPos"]
-position = Vector2(900, 252)
+position = Vector2(920, 252)
 
 [node name="Marker2D22" type="Marker2D" parent="SpawnPos"]
-position = Vector2(900, 402)
+position = Vector2(920, 402)
 
 [node name="Marker2D23" type="Marker2D" parent="SpawnPos"]
-position = Vector2(900, 552)
+position = Vector2(920, 552)
 
 [node name="Marker2D24" type="Marker2D" parent="SpawnPos"]
-position = Vector2(900, 702)
+position = Vector2(920, 702)
 
 [node name="Bricks" type="Node" parent="."]
 
@@ -360,5 +360,5 @@ one_shot = true
 autostart = true
 
 [node name="ComboTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
