@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://76u3yv37bjic" path="res://assets/images/bg/pattern.png" id="5_mdnw5"]
 [ext_resource type="Script" uid="uid://cp1o3vxry0vxc" path="res://scripts/world/pattern.gd" id="6_1jqyo"]
 [ext_resource type="Texture2D" uid="uid://ct668gyumrolu" path="res://assets/images/wall/yellow_brown/bottom_tile_64.png" id="7_8p756"]
-[ext_resource type="Shader" path="res://scripts/shader/combo.gdshader" id="7_50y7d"]
+[ext_resource type="Shader" uid="uid://bmcpedi5mqxy7" path="res://scripts/shader/combo.gdshader" id="7_50y7d"]
 [ext_resource type="Texture2D" uid="uid://dcbkeevrkih8t" path="res://assets/images/wall/yellow_brown/inner_corner_top_left_64.png" id="8_bapdg"]
 [ext_resource type="PackedScene" uid="uid://cvg0cmgxvdkk0" path="res://scenes/ball/ball.tscn" id="8_uwa4i"]
 [ext_resource type="Texture2D" uid="uid://ceh86jghjxxdf" path="res://assets/images/wall/yellow_brown/inner_corner_top_right_64.png" id="9_hfumc"]
@@ -115,7 +115,6 @@ shader_parameter/color = Color(0.462745, 0.462745, 0.462745, 0.180392)
 script = ExtResource("1_7vg3j")
 
 [node name="WebsocketUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TextEdit" type="TextEdit" parent="WebsocketUI"]
 custom_minimum_size = Vector2(600, 200)
@@ -125,7 +124,7 @@ offset_right = 865.0
 offset_bottom = 361.0
 theme_override_fonts/font = ExtResource("1_md5le")
 theme_override_font_sizes/font_size = 32
-text = "{\"type\": \"JOIN_ROOM\",\"data\": {\"roomId\": \"64783ce3-55c3-434d-b982-01b382d80d05\"}}"
+text = "{\"type\": \"JOIN_ROOM\",\"data\": {\"roomId\": \"e318c888-c5bc-4804-8357-8fbc6c5a93ff\"}}"
 autowrap_mode = 1
 
 [node name="Button" type="Button" parent="WebsocketUI"]

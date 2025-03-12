@@ -122,7 +122,7 @@ func _exit_tree() -> void:
 		socket.close()
 
 ### 创建房间 {"type": "CREATE_ROOM"}
-### 加入房间 {"type": "JOIN_ROOM","data": {"roomId": "3e61644e-f5d1-4582-9d46-956807a76e00"}}
+### 加入房间 {"type": "JOIN_ROOM","data": {"roomId": "e318c888-c5bc-4804-8357-8fbc6c5a93ff"}}
 func _on_button_pressed() -> void:
 	var cmd: String = test_edit.text
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:

@@ -5,7 +5,7 @@ signal start
 
 @export var websocket_client: WebsocketClient
 @export var speed: float = 600.0
-@export var accel: float = 5.0
+@export var accel: float = 10.0
 @export var deccel: float = 10.0
 @export_category("Oscillator")
 @export var spring: float = 400.0
@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 	else:
 		velocity.x = lerp(velocity.x, 0.0, deccel * delta)
 	## 限制速度范围
-	velocity.x = clampf(velocity.x, -500, 500);
+	velocity.x = clampf(velocity.x, -600, 600);
 	print("速度: " + str(velocity.x))
 	
 	## Oscillator
