@@ -72,7 +72,7 @@ func _process(_delta: float) -> void:
 						left_motor_data["efficiency"] = motor_data.get("efficiency")
 						left_motor_data["calorie"] = motor_data.get("calorie")
 						# 左电机回绳
-						if abs(left_motor_data["speed"]) > 20:
+						if left_motor_data["speed"] > 20:
 							left_motor_data["spring_back"] = 0
 						else:
 							left_motor_data["spring_back"] = 1
@@ -86,7 +86,7 @@ func _process(_delta: float) -> void:
 						right_motor_data["efficiency"] = motor_data.get("efficiency")
 						right_motor_data["calorie"] = motor_data.get("calorie")
 						# 右电机回绳
-						if abs(right_motor_data["speed"]) > 20:
+						if right_motor_data["speed"] + 20 < 0:
 							right_motor_data["spring_back"] = 0
 						else:
 							right_motor_data["spring_back"] = 1
